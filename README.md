@@ -1,48 +1,28 @@
-# Svelte + Vite
+# When To Call Cut
+This project was created as a final project for Coding For Digital Storytelling at Northeastern University.
 
-This template should help get you started developing with Svelte in Vite.
+It was created using the [Vite](https://vitejs.dev/guide/) starter code for a Svelte app.
 
-## Recommended IDE Setup
+## Live Site
+This project can be viewed at [https://annettastogniew.github.io/when-to-call-cut/](https://annettastogniew.github.io/when-to-call-cut/).
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+## Run Locally
+To run this website locally, clone the [repo](https://github.com/annettastogniew/when-to-call-cut.git) and run `npm install`.
 
-## Need an official Svelte framework?
+After installing all needed dependencies, run `npm run dev` and the site should be available at [http://localhost:5173/when_to_call_cut/](http://localhost:5173/when_to_call_cut/).
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+## Methods
+Data for this project was sourced from [Is it cut short?](https://github.com/xdpirate/isitcutshort.com/blob/main/data.json), [Rotten Tomatoes](https://www.rottentomatoes.com/) and the [TMDB API](https://www.themoviedb.org/documentation/api?language=en-US). A list of 12 shows in four different categories - ran for too long, was cancelled too soon, ended at just the right time, was cancelled but revived - were sourced from various online lists:
 
-## Technical considerations
+- [Too short](https://www.reddit.com/r/television/comments/10thkq1/what_tv_shows_were_cancelled_far_too_soon_but/)
+- [Too short](https://www.reddit.com/r/television/comments/ll129o/great_shows_that_got_cancelled_too_soon_before_a/)
+- [Too short](https://www.reddit.com/r/AskReddit/comments/w5t67f/what_shows_got_canceled_too_soon/)
+- [Too long](https://www.buzzfeed.com/shylawatson/tv-shows-that-went-on-too-long-reddit)
+- [Revived](https://www.insider.com/fans-saved-tv-show-2018-6#jericho-fans-sent-thousands-of-pounds-of-nuts-to-cbs-to-get-the-network-to-renew-the-series-7)
+- [Just right](https://www.buzzfeed.com/jennaguillaume/tv-shows-that-ended-at-the-right-time)
 
-**Why use this over SvelteKit?**
+These classifications were cross-referenced with each show's ratings over time. If ratings were reflective of the classification, it was considered
+reasonable and the show was viable for inclusion. 
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
-
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
-
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
-
-**Why `global.d.ts` instead of `compilerOptions.types` inside `jsconfig.json` or `tsconfig.json`?**
-
-Setting `compilerOptions.types` shuts out all other types not explicitly listed in the configuration. Using triple-slash references keeps the default TypeScript setting of accepting type information from the entire workspace, while also adding `svelte` and `vite/client` type information.
-
-**Why include `.vscode/extensions.json`?**
-
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
-
-**Why enable `checkJs` in the JS template?**
-
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
-
-**Why is HMR not preserving my local component state?**
-
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/rixo/svelte-hmr#svelte-hmr).
-
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
-
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
-```
-# when-to-call-cut
+Each show's Rotten Tomatoes ratings by season were collect by hand. TMDB voter scores and popularity scores were collected using the API. Show title
+cards were also sourced from the API. TMDB data for shows from the Is it cut short? database were collected for comparison with shows used in the story.
