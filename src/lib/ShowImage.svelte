@@ -2,7 +2,7 @@
   export let show;
 </script>
 
-<img class="revived-show-img" src={"public/assets/" + show.pic} alt={show.name + " title card"} >
+<img class="revived-show-img" src={"public/img/" + show.pic} alt={show.name + " title card"} >
 
 <style>
 

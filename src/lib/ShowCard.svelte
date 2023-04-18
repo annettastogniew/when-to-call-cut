@@ -12,7 +12,7 @@
 </script>
 
 <div class="show-card" role="button" on:click={() => (!disabled) && showDetails(show)} tabindex={tabIndex} on:keydown={handleKeyDown}>
-  <img id={show.pic.substring(0, show.pic.length-4) + "-img"} class="show-img" src={"public/assets/" + show.pic} alt={show.name + " title card"} aria-label="Select show" />
+  <img id={show.pic.substring(0, show.pic.length-4) + "-img"} class="show-img" src={"public/img/" + show.pic} alt={show.name + " title card"} aria-label="Select show" />
 </div>
 
 <style>
