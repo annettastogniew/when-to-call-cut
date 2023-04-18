@@ -118,10 +118,10 @@
   }
 
   onMount(async () => {
-		const res = await fetch('./data/show_ratings.json');
+		const res = await fetch('data/show_ratings.json');
 		shows = await res.json();
 
-    const res2 = await fetch('./data/revived_shows.json');
+    const res2 = await fetch('data/revived_shows.json');
     revivedShows = await res2.json();
 	});
 </script>
