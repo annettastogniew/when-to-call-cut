@@ -1,11 +1,11 @@
 @font-face {
   font-family: "PTSerif";
-  src: url('public/img/PTSerif-Regular.ttf');
+  src: url('img/PTSerif-Regular.ttf');
 }
 
 @font-face {
   font-family: "PTSerifBold";
-  src: url('public/img/PTSerif-Bold.ttf');
+  src: url('img/PTSerif-Bold.ttf');
 }
 
 :root {

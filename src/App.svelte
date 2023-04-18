@@ -118,10 +118,10 @@
   }
 
   onMount(async () => {
-		const res = await fetch('public/data/show_ratings.json');
+		const res = await fetch('data/show_ratings.json');
 		shows = await res.json();
 
-    const res2 = await fetch('public/data/revived_shows.json');
+    const res2 = await fetch('data/revived_shows.json');
     revivedShows = await res2.json();
 	});
 </script>
@@ -142,7 +142,7 @@
 </header>
 <main>
   {#if showImage}
-    <img transition:fade src="public/img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static">
+    <img transition:fade src="img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static">
   {/if}
   <section id="questions-content" class="hidden" aria-live="polite">
     <div id="question-1">
@@ -168,7 +168,7 @@
     <Question questionID="question-3" questionText={question2Text} options={question2Options} group={selectedRevival} on:logChoice={setText} />
   </section>
   {#if showImage}
-    <img transition:fade src="public/img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static-2">
+    <img transition:fade src="img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static-2">
   {/if}
   <section id="results-content" class="hidden" aria-live="polite">
     {#if endingText && revivalText}
@@ -223,7 +223,7 @@
     {/if}
   </section>
   {#if showImage}
-    <img transition:fade src="public/img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static-3">
+    <img transition:fade src="img/tv_static.gif" alt="tv static" class="fullscreen" id="tv-static-3">
   {/if}
   <section id="revived-content" class="not-fullscreen hidden" aria-live="polite">
     {#if revivedShows.length > 0}
