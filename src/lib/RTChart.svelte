@@ -37,16 +37,16 @@
   const ratingsChart = (ratingData, critic) => {
     const divWidth = d3.select('#intro').node().getBoundingClientRect().width;
     const mobile = divWidth <= 481;
-    const walkingDead = showData['name'] === 'The Walking Dead';
-    const toolTipText = mobile || walkingDead ? 's' : 'Season ';
-    const chartHeight = mobile || walkingDead ? 110 : 75;
+    const manySeasons = showData['name'] === 'The Walking Dead' || showData['name'] === 'Brooklyn Nine-Nine';
+    const toolTipText = mobile || manySeasons ? 's' : 'Season ';
+    const chartHeight = mobile || manySeasons ? 110 : 75;
     const numSeasons = ratingData.length;
-    const margin = {top: 30, right: -80, bottom: 70, left: mobile || walkingDead ? 0 : 140},
+    const margin = {top: 30, right: -80, bottom: 70, left: mobile || manySeasons ? 0 : 140},
         width = divWidth - margin.left - margin.right,
         height = chartHeight - margin.top - margin.bottom;
     const calculatedRectMargin = (width / numSeasons / 10);
     const calculatedRectWidth = mobile ? (width - (calculatedRectMargin * (numSeasons - 1)) * 3.5) / numSeasons : 
-    walkingDead ? (width - (calculatedRectMargin * (numSeasons - 1)) * 2.5) / numSeasons : 
+    manySeasons ? (width - (calculatedRectMargin * (numSeasons - 1)) * 2.5) / numSeasons : 
     (width - (calculatedRectMargin * (numSeasons - 1))) / numSeasons;
     const rectMargin = Math.min(calculatedRectMargin, 10);
     const rectWidth = Math.min(calculatedRectWidth, 70);
@@ -79,17 +79,17 @@
 
     const title = svg.append("text")
       .attr("class", "title")
-      .attr("y", mobile || walkingDead ? 0 : 15)
+      .attr("y", mobile || manySeasons ? 0 : 15)
       .style("font-size", "18px")
       .attr("font-weight", 700)
       .attr("fill", '#ffffff');
 
     if (critic) {
       title.text("Critic Scores")
-        .attr("x", mobile || walkingDead ? 0 : -107);
+        .attr("x", mobile || manySeasons ? 0 : -107);
     } else {
       title.text("Audience Scores")
-        .attr("x", mobile || walkingDead ? 0 : -140);
+        .attr("x", mobile || manySeasons ? 0 : -140);
     }
     
     const myColor = d3.scaleLinear().domain([0, 1])
@@ -103,13 +103,13 @@
 
       const mouseover = function(event, d) {
         tooltip
-          .attr("x", mobile || walkingDead ? mobileToolTip(d.seasonNumber) : xCoord(d.seasonNumber)+(rectWidth/2))
-          .attr("y", mobile || walkingDead ? 25 : -10)
+          .attr("x", mobile || manySeasons ? mobileToolTip(d.seasonNumber) : xCoord(d.seasonNumber)+(rectWidth/2))
+          .attr("y", mobile || manySeasons ? 25 : -10)
           .style("opacity", 1)
       }
       const mousemove = function(event, d) {
         tooltip
-          .text("Score: " + (d.rating * 100) + "%")
+          .text("Score: " + (d.rating * 100).toFixed(0) + "%")
       }
       const mouseleave = function(event, d) {
         tooltip
@@ -125,7 +125,7 @@
         .attr("width", rectWidth)
         .attr("height", 20)
         .attr("x", d => xCoord(d.seasonNumber))
-        .attr("y", mobile || walkingDead ? 35 : 0)
+        .attr("y", mobile || manySeasons ? 35 : 0)
         .attr("alt", d => critic ? "Critic " : "Audience " + "score for season " + d.seasonNumber + " was " + (d.rating * 100) + "%.")
         .style("fill", d => d.rating !== 'No Data' ? myColor(d.rating) : '#D3D3D3')
         .on("mouseover", mouseover)
@@ -139,7 +139,7 @@
       .join("text")
         .attr("class", "season-label")
         .attr("x", d => xCoord(d.seasonNumber)+(rectWidth/2))
-        .attr("y", mobile || walkingDead ? 75 : 40)
+        .attr("y", mobile || manySeasons ? 75 : 40)
         .text(d => d.seasonNumber === 1 ? toolTipText + d.seasonNumber : toolTipText  +d.seasonNumber)
         .style("text-anchor", "middle")
         .style("fill", "#ffffff");

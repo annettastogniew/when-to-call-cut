@@ -7,15 +7,24 @@
 
   let showIndex = 0;
   let currentShow = revivedShows[showIndex];
+  let showChart = true;
 
   const nextShow = () => {
     showIndex += 1;
     currentShow = revivedShows[showIndex];
+    showChart = false;
+    setTimeout(() => {
+      showChart = true;
+    }, 500);
   }
 
   const prevShow = () => {
     showIndex = showIndex - 1;
     currentShow = revivedShows[showIndex];
+    showChart = false;
+    setTimeout(() => {
+      showChart = true;
+    }, 500);
   }
   
 </script>
@@ -38,7 +47,7 @@
       <div class="button-filler"></div>
     {/if}
   </div>
-  <ShowInfo bind:show={currentShow} />
+  <ShowInfo bind:show={currentShow} showChart={showChart}/>
 </div>
 
 <style>
